@@ -1,0 +1,22 @@
+{
+  "name": "aeuscloud",
+  "version": "1.0.0",
+  "description": "Cloud Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teddyoweh/aeuscloud.git"
+  },
+  "keywords": [
+    "aeus"
+  ],
+  "author": "teddyoweh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teddyoweh/aeuscloud/issues"
+  },
+  "homepage": "https://github.com/teddyoweh/aeuscloud#readme"
+}
