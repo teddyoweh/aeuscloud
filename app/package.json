@@ -4,7 +4,8 @@
   "description": "Cloud Service",
   "main": "index.js",
   "scripts": {
-    "test": "start"
+    "test": "start",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/teddyoweh/aeuscloud/issues"
   },
-  "homepage": "https://github.com/teddyoweh/aeuscloud#readme"
+  "homepage": "https://github.com/teddyoweh/aeuscloud#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "electron": "^22.0.3",
+    "electron-is-dev": "^2.0.0",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "react-open-weather": "^1.3.0"
+  }
 }
