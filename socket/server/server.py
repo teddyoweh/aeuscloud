@@ -9,7 +9,7 @@ JOB_NUMBER = [1, 2]
 queue = Queue()
 all_connections = []
 all_address = []
-
+#tcp ports 
 
 # Create a Socket ( connect two computers)
 def create_socket():
