@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NavbarComponent() {
+export default function NavbarComponent({toggleUpload}) {
   return (
     <>
 
@@ -10,7 +10,7 @@ export default function NavbarComponent() {
           [1,2,3,4,4,1,2,3,4,4].map((item,index)=>{
             return (
               <>
-                 <div className="item">
+                 <div className="item" key={index}>
           <div className="icon">
             <i class='bx bxs-grid-alt'></i>
           </div>
@@ -26,7 +26,7 @@ export default function NavbarComponent() {
       </div>
       <div className="right">
         <div className="item">
-        <button><i class='bx bx-plus'></i></button>
+        <button onClick={()=>toggleUpload()}><i class='bx bx-plus'></i></button>
         </div>
        
       </div>

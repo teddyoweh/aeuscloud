@@ -54,7 +54,7 @@ export default function SidebarComponent({where}) {
                 <div className="sidebar-group">
                     <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
                     <i class='bx bx-code-curly' ></i>
-                        <span>Codes</span> 
+                    <span>Codes</span> 
                     </div>
                     <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
                         <i class='bx bxl-git'></i>

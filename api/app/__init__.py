@@ -2,14 +2,19 @@ import logging
 
 from flask import Flask, request as req
 
-from app.controllers import pages
+from app.controllers.routes import cluster
+from app.controllers.routes import data
+from app.controllers.routes import personal
+
 
 
 def create_app(config_filename):
     app = Flask(__name__)
     app.config.from_object(config_filename)
 
-    app.register_blueprint(pages.blueprint)
+    app.register_blueprint(cluster.blueprint)
+    app.register_blueprint(data.blueprint)
+    app.register_blueprint(personal.blueprint)
 
     app.logger.setLevel(logging.NOTSET)
 
