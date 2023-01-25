@@ -1,0 +1,24 @@
+[
+    {
+        "email": "teddy@gmail.com",
+        "firstname": "sdsd",
+        "lastname": "daed",
+        "password": "passwordteddy",
+        "id": "b98511e0220c48d8b1890e13dbeab466",
+        "date": "2023-01-24 23:48:25.444023",
+        "activity_history": [
+            {
+                "title": "Registered Account",
+                "date": "2023-01-24 23:48:25.444041"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-24 23:51:40.308017"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-24 23:51:52.769894"
+            }
+        ]
+    }
+]
