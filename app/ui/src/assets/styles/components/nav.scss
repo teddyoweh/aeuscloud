@@ -127,6 +127,48 @@ height: 40px;
         height: 98vh;
         width: 50%;
         border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .bottom{
+            padding: 10px;
+            .lilbtns{
+                display: flex;
+                flex-direction: row;
+
+            }
+            button{
+                border-style: none;
+                border-radius: 6px;
+                padding: 6px 10px;
+                width: 50%;
+                margin-right: 10px;
+                &:nth-child(1){
+                    transition: 0.3s;
+                    cursor: pointer;
+                    background: #d1d5d9;
+    border-style: solid;
+    border-color: #1a1b1c;
+    color: #1a1b1c;
+    &:hover{
+        transition: 0.3s;
+        background-color: #f5f7f8;
+    }
+                }
+                &:nth-child(2){
+                    color: white;
+    background: #e43131;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+ 
+
+        background-color: #fc4f4f;
+        transition: 0.3s;
+    }
+                }
+            }
+        }
         .header{
             border-style: solid;
             padding: 10px;

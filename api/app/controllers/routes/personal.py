@@ -4,7 +4,7 @@ from app.controllers.utils.Utils import Utils
 from datetime import datetime
 import uuid
 import json
-
+from flask_cors import CORS, cross_origin
 
 blueprint = Blueprint('personal', __name__)
 
@@ -26,10 +26,11 @@ proutes = {
     }
 
 }
-
+@cross_origin(origin='*',headers=['Authorization'])
 @blueprint.route(proutes['register']['route'],methods=proutes['register']['methods'])
 def register():
     user_data = request.form
+    print(user_data)
     validated = Validator.register(user_data)
     if(Validator.has_errors(validated)):
         response = jsonify({
@@ -43,7 +44,7 @@ def register():
         with open(Util.users_database, 'r') as f:
             data = json.load(f)
         user_data = dict(user_data)
-        user_data['id']=str(uuid.uuid4().hex)
+        user_data['id']=str(Util.uuid_())
         user_data['date']=str(datetime.now())
         user_data['activity_history']=[{
             'title':'Registered Account',
@@ -62,7 +63,7 @@ def register():
         response.status_code = 200
         return response
     
-
+@cross_origin(origin='*',headers=['Authorization'])
 @blueprint.route(proutes['login']['route'],methods=proutes['login']['methods'])
 def login():
     user_data = request.form

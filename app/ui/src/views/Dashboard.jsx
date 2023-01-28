@@ -4,7 +4,14 @@ import { datatypes } from './Data';
 import { MultiSelect } from "react-multi-select-component";
 import CreatableSelect from 'react-select/creatable';
 
+const userdata ={
 
+  'firstname':'Teddy',
+  'lastname':'Oweh',
+  'email':'teddyoweh@gmail.com',
+  'username':'teddyoweh'
+  
+}
 
 export default function DashboardPage() {
   const options = [
@@ -30,6 +37,30 @@ export default function DashboardPage() {
     
 
   }
+  const [imageURL, setImageURL] = useState('');
+
+  const handleUploadImage = (ev) => {
+    ev.preventDefault();
+
+    const data = new FormData();
+    data.append('file', uploadInput.current.files[0]);
+    data.append('filename', fileName.current.value);
+    data.append('datatype',datatype)
+    data.append('userdata',userdata)
+    console.log(data)
+    fetch('http://127.0.0.1:5000/d/upload', {
+      method: 'POST',
+      body: data,
+    }).then((response) => {
+      response.json().then((body) => {
+        setImageURL(`http://localhost:3000/${body.file}`);
+      });
+    });
+  }
+
+  const uploadInput = React.createRef();
+  const fileName = React.createRef();
+
 
   return (
     <>
@@ -44,6 +75,9 @@ export default function DashboardPage() {
        <div className={!isaddOpen?"addnewbox hidethisshit":"addnewbox "}>
   
              <div className="addnew">
+              <div className="top">
+
+     
               <div className="header">
                 <div className="left">
                   <label htmlFor="">
@@ -51,7 +85,7 @@ export default function DashboardPage() {
                   </label>
                 </div>
                 <div className="right">
-                  <i class='bx bx-x' onClick={()=>toggleUpload()}></i>
+                  <i className='bx bx-x' onClick={()=>toggleUpload()}></i>
                 </div>
 
               </div>
@@ -85,9 +119,31 @@ export default function DashboardPage() {
                     <label htmlFor="">Tags</label>
                     <CreatableSelect isMulti options={options} />
                   </div>
+                  <div className="frm-group">
+           
+      <div>
+        <input ref={uploadInput}  type="file" />
+      </div>
+      <div>
+       
+      </div>
+      <br />
+      <div>
+ 
+      </div>
+     
+ 
+                  </div>
 
                 </form>
 
+              </div>
+              </div>
+              <div className="bottom">
+                <div className="lilbtns">
+                  <button onClick={handleUploadImage}>Upload</button>
+                  <button onClick={()=>toggleUpload()}>Cancel</button>
+                </div>
               </div>
               
              </div>

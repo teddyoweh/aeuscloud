@@ -11,20 +11,20 @@ class ValidateReq:
 
     def has_errors(self, errors:dict)->bool:
         return bool(errors)
-    def email_exists(self,email:str)->bool:
+    def does_exists(self,email:str,field:str)->bool:
         with open(Util.users_database, 'r') as f:
             data = json.load(f)
             print(data)
             for user in data:
                 print(user)
-                if user["email"] == email:
+                if user[field] == email:
                     return True
         return False
     def register(self,data:dict)->dict:
 
         errors = {}
  
-        required_fields = ['firstname', 'email', 'lastname', 'password']
+        required_fields = ['firstname', 'email', 'lastname', 'password','username']
         for field in required_fields:
             if field not in data or not data[field]:
                 errors[field] = 'This field is required'
@@ -52,8 +52,14 @@ class ValidateReq:
         except:
             pass
 
-        if self.email_exists(data['email']):
+        if self.does_exists(data['email'],'email'):
             errors['email'] = 'Email already exists'
+        try:
+
+            if self.does_exists(data['username'],'username'):
+                errors['username'] = 'Username already exists'
+        except:
+            pass
 
         return errors
     def login(self,data:dict)->dict:

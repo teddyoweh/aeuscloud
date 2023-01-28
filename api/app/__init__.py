@@ -17,7 +17,11 @@ def create_app(config_filename):
     app.register_blueprint(personal.blueprint)
 
     app.logger.setLevel(logging.NOTSET)
-
+    routes = []
+    for rule in app.url_map.iter_rules():
+        routes.append({'methods': list(rule.methods), 'route': rule.rule})
+        print(rule.methods,rule.rule)
+ 
     @app.after_request
     def log_response(resp):
         app.logger.info("{} {} {}\n{}".format(
