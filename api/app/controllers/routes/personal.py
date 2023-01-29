@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, request,jsonify
 from app.controllers.utils.ValidateReq import ValidateReq
 from app.controllers.utils.Utils import Utils, User
+from app.controllers.utils.Storage import Storage
 from app.controllers.utils.decorators import token_required
 import jwt
 from datetime import datetime, timedelta
@@ -17,6 +18,7 @@ blueprint = Blueprint('personal', __name__)
 prefix='/p'
 Validator = ValidateReq()
 Util = Utils()
+Store = Storage()
 proutes = {
     'login':{
          'route':f'{prefix}/login',
@@ -66,6 +68,7 @@ def register():
  
             user_data['password'] = Util.secure_password(user_data['password'])
             user_data['id']=str(Util.uuid_())
+            user_data['folder_name'] = Util.folder_name(user_data['id'],Util.secure_password(user_data['password']),user_data['username'],user_data['email'],user_data['firstname'])
             user_data['date']=str(datetime.now())
             user_data['activity_history']=[{
                 'title':'Registered Account',
@@ -73,6 +76,7 @@ def register():
             }]
 
             data.append(user_data)
+            Store.new_bucket(user_data['folder_name'])
 
     
         with open(Util.users_database, 'w') as f:

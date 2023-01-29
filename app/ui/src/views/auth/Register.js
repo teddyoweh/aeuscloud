@@ -1,8 +1,10 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { serverip,authendpoints,headers } from "../../config/constants";
- 
+import { AppContext } from '../../context/appContext';
+import { Navigate } from "react-router-dom";
+
 
 
 function RegisterPage(){
@@ -14,6 +16,7 @@ function RegisterPage(){
     const [activeErrors,setActiveErrors] = useState({})
     const [activeSuccess,setActiveSuccess] = useState('')
     const [success,setSuccess] = useState(false)
+    const {isAuth, setIsAuth } = useContext(AppContext);
     const isbtndisabled = email.length !==0 && password.length >8 && username.length !==0 && firstname.length !==0 && lastname.length !==0 ?'':'disabled'
 
     async function submitRegister(e){
@@ -44,7 +47,7 @@ function RegisterPage(){
             setSuccess(true)
             
           } catch (error) {
-            // console.log( Object.keys(error.response.data.data));
+            console.log(error)
             setActiveErrors(error.response.data.data)
        
 
@@ -73,7 +76,11 @@ function RegisterPage(){
     
    
     return (
+        <>
 
+        {
+            isAuth===false?
+     
      <div className="auth-box">
         <div className="top">
             AEUS CLOUD
@@ -154,7 +161,10 @@ function RegisterPage(){
             
             </label>
          </div>
-     </div>
+     </div> :
+     <Navigate to="/"/>
+     }
+             </>
     )
 }
 

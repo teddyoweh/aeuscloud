@@ -1,6 +1,33 @@
-import React from 'react'
+import React, {useState,useContext}from 'react'
+import { TabContext } from '../context/tabContext'
 
 export default function SidebarComponent({where}) {
+
+    const {tabs,setTab,activeTab,setActiveTab} = useContext(TabContext) 
+    const [tab_data,setTab_data] = useState({})
+    function addTab(tab){
+        
+        if (tab==='dc'){
+
+
+ 
+        setTab_data({
+            'title':'Data Cluster',
+            'title_icon':<i class='bx bxs-data'></i>
+        })
+   
+      
+    }
+        
+        if (tabs.length===0){
+            setTab([tab_data])
+        }else{
+            setTab([...tabs,tab_data])
+        }
+     
+        setActiveTab([...activeTab, tabs.length])
+
+    }
   return (
     <div className="sidebar">
         <div className="sidebar-content">
@@ -15,7 +42,7 @@ export default function SidebarComponent({where}) {
                         <span>Overview</span> 
                     </div>
                   
-                    <div className={where==='starred'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('dc')} className={where==='starred'?"sidebar-item active":'sidebar-item '}>
                     <i class='bx bxs-data'></i>
                         <span>Data Cluster</span> 
                     </div>

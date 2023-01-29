@@ -5,76 +5,41 @@
         "email": "teddyoweh@gmail.com",
         "username": "teddyoweh",
         "password": "2467c5ed9515982ff5148ba050349956",
-        "id": "528120230417453774399766",
-        "date": "2023-01-28 17:04:00.453898",
+        "id": "52812023375219417201930651",
+        "folder_name": "81a8a608dad4e70b09ec0f30c996e890",
+        "date": "2023-01-28 19:52:37.879521",
         "activity_history": [
             {
                 "title": "Registered Account",
-                "date": "2023-01-28 17:04:00.453909"
+                "date": "2023-01-28 19:52:37.879533"
             },
             {
                 "title": "Logged IN",
-                "date": "2023-01-28 17:10:56.846596"
+                "date": "2023-01-28 19:53:47.791929"
             },
             {
                 "title": "Logged IN",
-                "date": "2023-01-28 17:14:25.803080"
+                "date": "2023-01-28 20:47:08.714635"
+            }
+        ]
+    },
+    {
+        "firstname": "Goose",
+        "lastname": "Adrh",
+        "email": "goose@gmail.com",
+        "username": "goose",
+        "password": "d42ce2301cfe0b34f25217459ac0db39",
+        "id": "5281202351502129382437732",
+        "folder_name": "d38b7e72ff0f91091cb5e3822591aab9",
+        "date": "2023-01-28 21:50:51.736777",
+        "activity_history": [
+            {
+                "title": "Registered Account",
+                "date": "2023-01-28 21:50:51.736785"
             },
             {
                 "title": "Logged IN",
-                "date": "2023-01-28 17:15:13.387699"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 17:17:04.656423"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 17:19:26.175517"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:54:39.173904"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:54:45.239947"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:54:46.544620"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:56:00.814794"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:57:12.625725"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 18:58:13.833328"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 19:00:20.270202"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 19:00:49.797686"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 19:01:53.336143"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 19:04:33.035359"
-            },
-            {
-                "title": "Logged IN",
-                "date": "2023-01-28 19:06:06.483354"
+                "date": "2023-01-28 21:51:07.825279"
             }
         ]
     }

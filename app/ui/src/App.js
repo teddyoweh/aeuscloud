@@ -3,19 +3,26 @@ import Router from "./router";
 import {AppContext} from "./context/appContext";
 import axios from "axios";
 import { homendpoints,headers } from "./config/constants";
+import { UserContext } from "./context/userContext";
+import { TabContext } from "./context/tabContext";
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [userD, setUserD] = useState({});
+  const [tabs, setTab] = useState([]);
+  const [activeTab,setActiveTab] = useState([])
+  const [userD, setUserD] = useState(JSON.parse(localStorage.getItem("user")));
   async function initPage(){
   
     try {
       const response = await axios.post(homendpoints['home'],{'name':'tedd'},{headers:headers});
       setIsAuth(true)
+
+      
       
    
     }
+    
     catch (error) {
-      console.log(error);
+ 
       setIsAuth(false);
       
       return (<>
@@ -26,12 +33,20 @@ function App() {
     }
   }
   useEffect(() => {
-   console.log(isAuth)
+   console.log(userD)
     initPage();
   },[]);
   return (
-    <AppContext.Provider value={{isAuth,setIsAuth,userD, setUserD}} >
+    <AppContext.Provider value={{isAuth,setIsAuth}} >
+      <UserContext.Provider value={{userD, setUserD}}>
+        <TabContext.Provider value={{tabs,setTab,activeTab,setActiveTab}}>
+
+
+   
+      
         <Router/>
+        </TabContext.Provider>
+        </UserContext.Provider>
     </AppContext.Provider>
 
   );

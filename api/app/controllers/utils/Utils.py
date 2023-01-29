@@ -11,10 +11,14 @@ class Utils:
         self.data_dir = 'data'
         self.root_dir = f'{self.data_dir}/root'
         self.client_dir = f'{self.root_dir}/client'
+        self.client_user_dir = f'{self.client_dir}/users'
         self.server_dir = f'{self.root_dir}/server'
         self.users_database = f'{self.server_dir}/users.json'
         self.secret = '$2b$12$.HkBwUbLxWdKzCdX1PqTue'
-
+    def folder_name(self,uuid,password,username,email,firstname):
+        data  = uuid+password+username+email+firstname+self.uuid_()
+        return self.hash_password(self.secure_password(data))
+        pass
     def uuid_(self):
         now = datetime.datetime.now()
         day_of_week = now.weekday()

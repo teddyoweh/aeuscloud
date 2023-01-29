@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { serverip,authendpoints,headers,homendpoints } from "../../config/constants";
 import { AppContext } from '../../context/appContext';
+import { UserContext } from "../../context/userContext";
 import { Navigate } from "react-router-dom";
 
 function LoginPage(){
@@ -11,6 +12,7 @@ function LoginPage(){
     const [activeErrors,setActiveErrors] = useState({})
     const isbtndisabled = uuid.length !==0 && password.length >8?'':'disabled'
     const {isAuth, setIsAuth } = useContext(AppContext);
+    const {userD, setUserD} = useContext(UserContext);
 
     async function submitLogin(e){
 
@@ -31,6 +33,7 @@ function LoginPage(){
             localStorage.setItem('user', JSON.stringify(response.data.data))
             
             setIsAuth(true)
+            setUserD(response.data.data)
           } catch (error) {
  
             setActiveErrors(error.response.data.data)

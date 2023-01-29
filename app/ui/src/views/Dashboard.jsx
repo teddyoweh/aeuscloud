@@ -6,6 +6,7 @@ import CreatableSelect from 'react-select/creatable';
 import { serverip,homendpoints,headers } from "../config/constants";
 import { Navigate } from "react-router-dom";
 import { AppContext } from '../context/appContext';
+import { UserContext } from '../context/userContext';
 
 import axios from 'axios';
 const userdata ={
@@ -20,7 +21,7 @@ const userdata ={
 export default function DashboardPage() {
   const {isAuth, setIsAuth } = useContext(AppContext);
 
-const [error,setError]= useState(false)
+  const {userD} = useContext(UserContext)
  
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -52,9 +53,9 @@ const [error,setError]= useState(false)
 
     const data = new FormData();
     data.append('file', uploadInput.current.files[0]);
-    data.append('filename', fileName.current.value);
+ 
     data.append('datatype',datatype)
-    data.append('userdata',userdata)
+    data.append('userdata', JSON.stringify(userD))
     console.log(data)
     fetch('http://127.0.0.1:5000/d/upload', {
       method: 'POST',

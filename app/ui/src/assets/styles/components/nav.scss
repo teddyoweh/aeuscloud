@@ -18,6 +18,7 @@ height: 40px;
         flex-direction: row;
     
         .item{
+            cursor: pointer;
             height: 100%;
             display: flex;
             flex-direction: row;
@@ -31,6 +32,12 @@ height: 40px;
             border-width: 0px 2px 0px 0px;
             border-color: #1d2125;
             font-size: 15px;
+            &.active{
+                background: #1d2125;
+                border-color: #343a40;
+                box-shadow: 0px 0px 18px #1c1e20;
+                transform: scale(1);
+            }
             .icon{
                 display: flex;
                 flex-direction: row;
@@ -38,6 +45,9 @@ height: 40px;
                 align-items: center;
                 font-size: 14px;
                 margin-right:2%;
+            }
+            .text{
+                width: 95px;
             }
             .x{
                 height: 44%;

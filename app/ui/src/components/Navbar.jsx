@@ -1,21 +1,45 @@
-import React from 'react'
-
+import React, {useState,useContext}from 'react'
+import { TabContext } from '../context/tabContext'
 export default function NavbarComponent({toggleUpload}) {
+  const {tabs,setTab,activeTab,setActiveTab} = useContext(TabContext)
+  function removeTab(index) {
+    
+    const newTabs = [...tabs];
+    newTabs.splice(index, 1);
+    const newActiveTabs = [...activeTab]
+    newActiveTabs.pop()
+    setActiveTab(newActiveTabs)
+    setTab(newTabs);
+
+  }
+  function putTab(item){
+    const array = activeTab
+    if(activeTab.includes(item)){
+      var index = array.indexOf(item);
+      if (index !== -1) {
+        array.splice(index, 1);
+      }
+    }
+
+    setActiveTab([...array,item])
+    console.log(activeTab)
+}
+console.log(tabs)
   return (
     <>
 
     <nav>
       <div className="left">
         {
-          [1,2,3,4,4,1,2,3,4,4].map((item,index)=>{
+          tabs.map((item,index)=>{
             return (
               <>
-                 <div className="item" key={index}>
+                 <div className={activeTab[activeTab.length-1] ===index?"item active":"item"} onClick={()=>putTab(index)} key={index}>
           <div className="icon">
-            <i class='bx bxs-grid-alt'></i>
+            {item.title_icon}
           </div>
-          <div className="text">Overview</div>
-          <div className="x">x</div>
+          <div className="text">{item.title}</div>
+          <div className="x" onClick={()=>removeTab(index)}>x</div>
         </div>
               </>
             )
