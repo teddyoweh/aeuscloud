@@ -17,14 +17,17 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
     "sass": "^1.57.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "electron": "^22.1.0",
+    "concurrently": "^7.6.0",
+    "electron-is-dev": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "dev": "concurrently -k \"npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
@@ -47,7 +50,7 @@
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
-    "electron": "^22.0.3",
+    "electron": "^22.1.0",
     "electron-is-dev": "^2.0.0",
     "wait-on": "^7.0.1"
   }
