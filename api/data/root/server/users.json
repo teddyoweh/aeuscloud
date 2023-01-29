@@ -1,1 +1,81 @@
-[]
+[
+    {
+        "firstname": "Teddy",
+        "lastname": "Oweh",
+        "email": "teddyoweh@gmail.com",
+        "username": "teddyoweh",
+        "password": "2467c5ed9515982ff5148ba050349956",
+        "id": "528120230417453774399766",
+        "date": "2023-01-28 17:04:00.453898",
+        "activity_history": [
+            {
+                "title": "Registered Account",
+                "date": "2023-01-28 17:04:00.453909"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 17:10:56.846596"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 17:14:25.803080"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 17:15:13.387699"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 17:17:04.656423"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 17:19:26.175517"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:54:39.173904"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:54:45.239947"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:54:46.544620"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:56:00.814794"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:57:12.625725"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 18:58:13.833328"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 19:00:20.270202"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 19:00:49.797686"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 19:01:53.336143"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 19:04:33.035359"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-28 19:06:06.483354"
+            }
+        ]
+    }
+]

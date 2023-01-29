@@ -27,37 +27,41 @@ class ValidateReq:
         required_fields = ['firstname', 'email', 'lastname', 'password','username']
         for field in required_fields:
             if field not in data or not data[field]:
-                errors[field] = 'This field is required'
+                errors[field] = f'{field.capitalize()} is required'
             try:
                 if len(data[field])==0:
-                    errors[field] = f'This {field.capitalize()} is required'
+                    errors[field] = f'{field.capitalize()} is required'
             except:
                 pass
             
         try:
-
-            if len(data['password']) < 8:
-                errors['password'] = 'Password must be at least 8 characters'
+            if 'password' not in errors:
+                if len(data['password']) < 8:
+                    errors['password'] = 'Password must be at least 8 characters'
         except:
             pass
         try:
-            if data['password'] in self.common_passwords:
-                errors['password'] = 'Please choose a stronger password'
+            if 'password' not in errors:
+                if data['password'] in self.common_passwords:
+                    errors['password'] = 'Please choose a stronger password'
         except:
             pass
         try:
-            email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-            if not re.match(email_regex, data['email']):
-                errors['email'] = 'Invalid email format'
+            if 'email' in errors:
+                pass
+            else:
+                email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+                if not re.match(email_regex, data['email']):
+                    errors['email'] = 'Invalid email format'
         except:
             pass
-
-        if self.does_exists(data['email'],'email'):
-            errors['email'] = 'Email already exists'
+        if 'email' not in errors:
+            if self.does_exists(data['email'],'email'):
+                errors['email'] = 'Email already exists'
         try:
-
-            if self.does_exists(data['username'],'username'):
-                errors['username'] = 'Username already exists'
+            if 'username' not in errors:
+                if self.does_exists(data['username'],'username'):
+                    errors['username'] = 'Username already exists'
         except:
             pass
 
@@ -65,10 +69,10 @@ class ValidateReq:
     def login(self,data:dict)->dict:
         errors = {}
  
-        required_fields = ['email', 'password']
+        required_fields = ['uuid', 'password']
         for field in required_fields:
             if field not in data or not data[field]:
-                errors[field] = f'This {field.capitalize()} is required'
+                errors[field] = f'{field.capitalize()} is required'
             try:
                 if len(data[field])==0:
                     errors[field] = f'This {field.capitalize()} is required'
@@ -80,12 +84,16 @@ class ValidateReq:
         
         try:
             email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-            if not re.match(email_regex, data['email']):
-                errors['email'] = 'Invalid email format'
+            if not re.match(email_regex, data['uuid']):
+                errors['uuid'] = 'Invalid email format'
         except:
             pass
-
-        if self.email_exists(data['email'])==False:
-            errors['email'] = "Email doesn't exists"
+        if Util.check_email_or_username(data['uuid']) =='email':
+            if self.does_exists(data['uuid'],'email')==False:
+                errors['uuid'] = "Email doesn't exists"
+        elif Util.check_email_or_username(data['uuid']) =='username':
+            if self.does_exists(data['uuid'],'username')==False:
+                errors['uuid'] = "Username doesn't exists"
+        
 
         return errors

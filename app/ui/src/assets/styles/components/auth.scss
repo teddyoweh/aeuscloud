@@ -3,7 +3,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
-height: 100vh;
+min-height: 100vh;
 width: 100%;
 background: linear-gradient(rgb(190 212 255) 0%, rgb(209 223 255) 140px, rgb(206, 224, 246) 640px, rgb(202 211 249) max(100vh, 700px), rgb(202, 230, 249) 100%);.top{
     display: flex;

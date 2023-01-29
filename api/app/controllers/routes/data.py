@@ -33,8 +33,9 @@ droutes = {
 @blueprint.route(droutes['createnotes']['route'], methods=droutes['createnotes']['method'])
 def createnotes():
     return {'hello'}
-@cross_origin(origin='*',headers=['Authorization'])
+
 @blueprint.route(droutes['upload']['route'], methods=droutes['upload']['method'])
+@cross_origin(origin='*',headers=['Authorization'])
 def fileUpload():
     target=os.path.join(UPLOAD_FOLDER,'test_docs')
     if not os.path.isdir(target):

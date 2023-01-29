@@ -11,11 +11,12 @@ from app.controllers.routes import personal
 def create_app(config_filename):
     app = Flask(__name__)
     app.config.from_object(config_filename)
-
+    app.config['SECRET_KEY'] = 'secret'
     app.register_blueprint(cluster.blueprint)
     app.register_blueprint(data.blueprint)
     app.register_blueprint(personal.blueprint)
 
+ 
     app.logger.setLevel(logging.NOTSET)
     routes = []
     for rule in app.url_map.iter_rules():

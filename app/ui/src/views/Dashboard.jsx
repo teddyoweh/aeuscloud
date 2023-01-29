@@ -1,9 +1,13 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState,useContext} from 'react';
 import { SidebarComponent,NavbarComponent } from '../components';
 import { datatypes } from './Data';
 import { MultiSelect } from "react-multi-select-component";
 import CreatableSelect from 'react-select/creatable';
+import { serverip,homendpoints,headers } from "../config/constants";
+import { Navigate } from "react-router-dom";
+import { AppContext } from '../context/appContext';
 
+import axios from 'axios';
 const userdata ={
 
   'firstname':'Teddy',
@@ -14,6 +18,10 @@ const userdata ={
 }
 
 export default function DashboardPage() {
+  const {isAuth, setIsAuth } = useContext(AppContext);
+
+const [error,setError]= useState(false)
+ 
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -60,10 +68,16 @@ export default function DashboardPage() {
 
   const uploadInput = React.createRef();
   const fileName = React.createRef();
-
-
+ 
   return (
+   
     <>
+ {
+     isAuth===false?
+      <Navigate to='/login'></Navigate>
+      :
+<>
+ 
 
     <div className='app-c'>
       <SidebarComponent where='overview'/>
@@ -149,7 +163,8 @@ export default function DashboardPage() {
              </div>
       
        </div>
-
+       </>
+}
        </>
   )
 }
