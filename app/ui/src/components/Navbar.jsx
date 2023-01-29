@@ -1,7 +1,7 @@
 import React, {useState,useContext}from 'react'
 import { TabContext } from '../context/tabContext'
 export default function NavbarComponent({toggleUpload}) {
-  const {tabs,setTab,activeTab,setActiveTab} = useContext(TabContext)
+  const {tabs,setTab,activeTab,setActiveTab,setActiveType} = useContext(TabContext)
   function removeTab(index) {
     
     const newTabs = [...tabs];
@@ -12,8 +12,11 @@ export default function NavbarComponent({toggleUpload}) {
     setTab(newTabs);
 
   }
-  function putTab(item){
+  function putTab(item1){
+    const item = item1.index
+    setActiveType(item1.type)
     const array = activeTab
+
     if(activeTab.includes(item)){
       var index = array.indexOf(item);
       if (index !== -1) {
@@ -34,7 +37,7 @@ console.log(tabs)
           tabs.map((item,index)=>{
             return (
               <>
-                 <div className={activeTab[activeTab.length-1] ===index?"item active":"item"} onClick={()=>putTab(index)} key={index}>
+                 <div className={activeTab[activeTab.length-1] ===index?"item active":"item"} onClick={()=>putTab(item)} key={index}>
           <div className="icon">
             {item.title_icon}
           </div>

@@ -1,33 +1,118 @@
 import React, {useState,useContext}from 'react'
 import { TabContext } from '../context/tabContext'
 
-export default function SidebarComponent({where}) {
+export default function SidebarComponent() {
 
-    const {tabs,setTab,activeTab,setActiveTab} = useContext(TabContext) 
-    const [tab_data,setTab_data] = useState({})
+    const {tabs,setTab,activeTab,setActiveTab,activeType, setActiveType} = useContext(TabContext) 
+ 
     function addTab(tab){
-        
+        let tab_data = {}
         if (tab==='dc'){
 
 
  
-        setTab_data({
+        tab_data={
             'title':'Data Cluster',
-            'title_icon':<i class='bx bxs-data'></i>
-        })
+            'title_icon':<i class='bx bxs-data'></i>,
+            'type':'dc'
+        }
    
-      
-    }
-        
+        }
+        else if (tab==='ovw'){
+            tab_data={
+                'title':'Overview',
+                'title_icon':<i class='bx bxs-grid-alt'></i>,
+                'type':tab
+            }
+        }
+        else if (tab==='docs'){
+            tab_data={
+                'title':'Documents',
+                'title_icon':<i class='bx bxs-file-blank'></i>,
+                'type':tab
+            }
+        }
+        else if (tab==='pics'){
+            tab_data={
+                'title':'Pictures',
+                'title_icon':<i class='bx bxs-file-image'></i>,
+                'type':tab
+            }
+            
+        }
+        else if(tab==='vids'){
+            tab_data={
+                'title':'Videos',
+                'title_icon': <i class='bx bxs-video'></i>,
+                'type':tab
+            }
+           
+        }
+        else if(tab==='audio'){
+            tab_data={
+                'title':'Audios',
+                'title_icon':     <i class='bx bxs-music'></i>,
+                'type':tab
+            }
+        }
+        else if(tab==='starred'){
+            tab_data={
+                'title':'Starred',
+                'title_icon':<i class='bx bxs-bookmark'></i>,
+                'type':tab
+            }
+
+        }
+    
+        else if(tab==='code'){
+            tab_data={
+                'title':'Codes',
+                'title_icon':        <i class='bx bx-code-curly' ></i>,
+                'type':tab
+            }
+
+        }
+        else if(tab==='git'){
+            tab_data={
+                'title':'Git Repos',
+                'title_icon':               <i class='bx bxl-git'></i>,
+                'type':tab
+            }
+
+        }
+        else if(tab==='api'){
+            tab_data={
+                'title':'Api Integrations',
+                'title_icon':<i class='bx bx-network-chart'></i>,
+                'type':tab
+            }
+
+        }
+
+
+
         if (tabs.length===0){
             setTab([tab_data])
         }else{
             setTab([...tabs,tab_data])
         }
-     
+        setActiveType(tab)
         setActiveTab([...activeTab, tabs.length])
-
+    console.log(activeTab)
     }
+    function countType(data, type) {
+        var count = 0;
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].type === type) {
+            count++;
+          }
+        }
+        return count;
+      }
+      
+ 
+      
+    
   return (
     <div className="sidebar">
         <div className="sidebar-content">
@@ -37,14 +122,29 @@ export default function SidebarComponent({where}) {
             </div>
             <div className="sidebar-items">
                 <div className="sidebar-group">
-                    <div className={where==='overview'?"sidebar-item active":'sidebar-item '}>
+                    <div  onClick={()=>addTab('ovw')}  className={activeType==='ovw'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxs-grid-alt'></i>
                         <span>Overview</span> 
+                        </div>
+                   
+                        <div className="right">
+                    {countType(tabs,'ovw') >0 &&
+                       <small>{countType(tabs,'ovw')} </small>}
+                    </div>
                     </div>
                   
-                    <div onClick={()=>addTab('dc')} className={where==='starred'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('dc')} className={activeType==='dc'?"sidebar-item active":'sidebar-item '}>
+                    <div className="left">
                     <i class='bx bxs-data'></i>
                         <span>Data Cluster</span> 
+                    </div>
+                 
+
+                        <div className="right">
+                    {countType(tabs,'dc') >0 &&
+                       <small>{countType(tabs,'dc')} </small>}
+                    </div>
                     </div>
                     
                
@@ -54,48 +154,105 @@ export default function SidebarComponent({where}) {
                     </div>
                 </div>
                 <div className="sidebar-group">
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('docs')} className={activeType==='docs'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxs-file-blank'></i>
                         <span>Documents</span> 
+                        </div>
+                        <div className="right">
+                        {countType(tabs,'docs')>0&&
+                       <small> {countType(tabs,'docs')} </small>}
+                        </div>
+                   
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div  onClick={()=>addTab('pics')} className={activeType==='pics'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
+
+                   
                         <i class='bx bxs-file-image'></i>
                         <span>Pictures</span> 
+                        </div>
+                        <div className="right">
+                        {countType(tabs,'pics') >0 &&
+                       <small>{countType(tabs,'pics')} </small>}
+                        </div>
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div  onClick={()=>addTab('vids')} className={activeType==='vids'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxs-video'></i>
                         <span>Videos</span> 
+                        </div>
+                        <div className="right">
+                        {countType(tabs,'vids') >0 &&
+                       <small>{countType(tabs,'vids')} </small>}
+                        </div>
+           
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('audio')} className={activeType==='audio'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxs-music'></i>
                         <span>Audios</span> 
+                        </div>
+                
+                        <div className="right">
+                        {countType(tabs,'audio') >0 &&
+                       <small>{countType(tabs,'audio')} </small>}
+                        </div>
                     </div>
-                    <div className={where==='starred'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('starred')} className={activeType==='starred'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxs-bookmark'></i>
                         <span>Starred</span> 
+                        </div>
+                        <div className="right">
+                        {countType(tabs,'starred') >0 &&
+                       <small>{countType(tabs,'starred')} </small>}
+                        </div>                 
+                        
                     </div>
                     <div className="endline">
                         
                     </div>
                 </div>
                 <div className="sidebar-group">
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div onClick={()=>addTab('code')} className={activeType==='code'?"sidebar-item active":'sidebar-item '}>
+                    <div className="left">
                     <i class='bx bx-code-curly' ></i>
                     <span>Codes</span> 
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div className="right">
+                    {countType(tabs,'code') >0 &&
+                       <small>{countType(tabs,'code')} </small>}
+                    </div>
+                  
+                    </div>
+                    <div onClick={()=>addTab('git')} className={activeType==='git'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bxl-git'></i>
                         <span>Git Repos</span> 
+                        </div>
+             
+                        <div className="right">
+                    {countType(tabs,'git') >0 &&
+                       <small>{countType(tabs,'git')} </small>}
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    </div>
+                    <div onClick={()=>addTab('api')} className={activeType==='api'?"sidebar-item active":'sidebar-item '}>
+                        <div className="left">
                         <i class='bx bx-network-chart'></i>
-                        <span>API Integration</span> 
+            
+                            <span>API Integration</span> 
+                        </div>
+                        <div className="right">
+                    {countType(tabs,'api') >0 &&
+                       <small>{countType(tabs,'api')} </small>}
+                    </div>
                     </div>
                    
                     <div className="endline">
                         
                     </div>
-                    <div className={where=='documents'?"sidebar-item active":'sidebar-item '}>
+                    <div className={activeType=='documents'?"sidebar-item active":'sidebar-item '}>
                         <i class='bx bxs-cog' ></i>
                         <span>Settings</span> 
                     </div>
