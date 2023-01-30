@@ -34,7 +34,7 @@ function App() {
     }
   }
   useEffect(() => {
-   console.log(userD)
+ 
     initPage();
   },[]);
   return (
