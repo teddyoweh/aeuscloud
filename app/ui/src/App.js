@@ -26,9 +26,7 @@ function App() {
  
       setIsAuth(false);
       
-      return (<>
-  
-      </>)
+    
   
   
     }
