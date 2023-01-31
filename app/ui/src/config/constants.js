@@ -1,4 +1,4 @@
-const serverip = 'http://120.0.0.1:8000/'
+const serverip = 'http://137.184.0.187:5000/'
 
 const headers =   {
     'Content-Type': 'application/x-www-form-urlencoded',
