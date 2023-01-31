@@ -14,7 +14,7 @@ class ValidateReq:
     def does_exists(self,email:str,field:str)->bool:
         with open(Util.users_database, 'r') as f:
             data = json.load(f)
-            print(data)
+       
             for user in data:
                 print(user)
                 if user[field] == email:

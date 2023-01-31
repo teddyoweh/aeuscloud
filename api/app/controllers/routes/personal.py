@@ -41,7 +41,7 @@ proutes = {
 @token_required
 
 def home():
-    print('sss')
+ 
     return jsonify({'message':'tes'})
 
 

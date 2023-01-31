@@ -14,4 +14,7 @@ const authendpoints ={
 const homendpoints = {
   'home':`${serverip}/p`
 }
-export {serverip,authendpoints,homendpoints, headers}
+const dataendpoints ={
+  'upload':`${serverip}/d/upload`
+}
+export {serverip,authendpoints,homendpoints, headers,dataendpoints}

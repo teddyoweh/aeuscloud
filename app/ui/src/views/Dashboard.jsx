@@ -3,7 +3,7 @@ import { SidebarComponent,NavbarComponent } from '../components';
 import { datatypes } from './Data';
 import { MultiSelect } from "react-multi-select-component";
 import CreatableSelect from 'react-select/creatable';
-import { serverip,homendpoints,headers } from "../config/constants";
+import { serverip,homendpoints,headers,dataendpoints } from "../config/constants";
 import { Navigate } from "react-router-dom";
 import { AppContext } from '../context/appContext';
 import { UserContext } from '../context/userContext';
@@ -57,12 +57,12 @@ export default function DashboardPage() {
     data.append('datatype',datatype)
     data.append('userdata', JSON.stringify(userD))
     console.log(data)
-    fetch('http://127.0.0.1:5000/d/upload', {
+    fetch(dataendpoints, {
       method: 'POST',
       body: data,
     }).then((response) => {
       response.json().then((body) => {
-        setImageURL(`http://localhost:3000/${body.file}`);
+      
       });
     });
   }

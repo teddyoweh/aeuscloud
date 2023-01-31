@@ -42,7 +42,7 @@ def createnotes():
 def fileUpload():
     post_data= request.form
     post_data = dict(post_data)
-    print(post_data)
+ 
     target=os.path.join(Util.client_user_dir,Store.get_user_folder(ast.literal_eval(post_data['userdata'])['id']))
     if not os.path.isdir(target):
         os.mkdir(target)
