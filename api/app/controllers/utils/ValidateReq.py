@@ -21,7 +21,12 @@ class ValidateReq:
                     return True
         return False
     def validate_username(self,username):
-        return re.match('^[A-Za-z0-9]+$', username) is not None
+        special_characters = list('~!@#$%^&*()_+-={}[]:";\'<>?,./|\\')
+        for char in str(username):
+            if char in special_characters:
+                return True
+        return False
+
     def register(self,data:dict)->dict:
 
         errors = {}
