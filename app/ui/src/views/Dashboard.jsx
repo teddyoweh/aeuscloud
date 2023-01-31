@@ -57,7 +57,7 @@ export default function DashboardPage() {
     data.append('datatype',datatype)
     data.append('userdata', JSON.stringify(userD))
     console.log(data)
-    fetch(dataendpoints, {
+    fetch(dataendpoints['upload'], {
       method: 'POST',
       body: data,
     }).then((response) => {
