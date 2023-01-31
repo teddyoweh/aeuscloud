@@ -7,6 +7,7 @@ import { serverip,homendpoints,headers,dataendpoints } from "../config/constants
 import { Navigate } from "react-router-dom";
 import { AppContext } from '../context/appContext';
 import { UserContext } from '../context/userContext';
+import { TabContext } from '../context/tabContext';
 
 import axios from 'axios';
 const userdata ={
@@ -33,6 +34,7 @@ export default function DashboardPage() {
   const [isaddOpen,setisaddOpen]=useState(false)
   const [newdataname,setNewDataName]= useState('')
   const [datatype, setDatatype] =useState('')
+  const {thisTab, setThisTab} = useContext(TabContext)
 
   const toggleUpload=()=>{
     console.log('toggle upload')
@@ -85,6 +87,11 @@ export default function DashboardPage() {
       <div className="dash-app">
         <NavbarComponent toggleUpload={()=>toggleUpload()}
        />
+       <div className="dash-content">
+      {
+        thisTab.content
+      }
+       </div>
       </div>
     </div>
        <div className={!isaddOpen?"addnewbox hidethisshit":"addnewbox "}>

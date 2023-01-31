@@ -20,6 +20,8 @@ class ValidateReq:
                 if user[field] == email:
                     return True
         return False
+    def validate_username(self,username):
+        return re.match('^[A-Za-z0-9]+$', username) is not None
     def register(self,data:dict)->dict:
 
         errors = {}
@@ -55,6 +57,12 @@ class ValidateReq:
                     errors['email'] = 'Invalid email format'
         except:
             pass
+        try:
+            if 'username' not in errors:
+                if self.validate_username(data['username']):
+                    errors['username']='Username can only contain letters and numbers'
+        except:
+            pass
         if 'email' not in errors:
             if self.does_exists(data['email'],'email'):
                 errors['email'] = 'Email already exists'
@@ -82,12 +90,12 @@ class ValidateReq:
 
      
         
-        try:
-            email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-            if not re.match(email_regex, data['uuid']):
-                errors['uuid'] = 'Invalid email format'
-        except:
-            pass
+        # try:
+        #     email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+        #     if not re.match(email_regex, data['uuid']):
+        #         errors['uuid'] = 'Invalid email format'
+        # except:
+        #     pass
         if Util.check_email_or_username(data['uuid']) =='email':
             if self.does_exists(data['uuid'],'email')==False:
                 errors['uuid'] = "Email doesn't exists"

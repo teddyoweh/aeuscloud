@@ -11,6 +11,7 @@ function App() {
   const [activeTab,setActiveTab] = useState([])
   const [activeType, setActiveType] =useState('')
   const [userD, setUserD] = useState(JSON.parse(localStorage.getItem("user")));
+  const [thisTab, setThisTab] = useState({})
   async function initPage(){
   
     try {
@@ -38,7 +39,7 @@ function App() {
   return (
     <AppContext.Provider value={{isAuth,setIsAuth}} >
       <UserContext.Provider value={{userD, setUserD}}>
-        <TabContext.Provider value={{tabs,setTab,activeTab,setActiveTab,activeType, setActiveType}}>
+        <TabContext.Provider value={{tabs,setTab,activeTab,setActiveTab,activeType, setActiveType,thisTab, setThisTab}}>
 
 
    

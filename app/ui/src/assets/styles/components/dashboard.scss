@@ -1,5 +1,91 @@
 .dash-app{
     background-color: #1d2125;
     width:80%;
-   height:100vh;
+   min-height:100vh;
+   .dash-content{
+    padding:10px 20px;
+    .app-sec{
+        .header{
+            padding-top: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            .left{
+                label{
+                    font-size: 27px;
+                    color: white;
+                    font-weight: 700;
+                }
+            }
+            .right{
+                width: 40%;
+                .options{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 100%;
+                    .search-box{
+                        background: #343a40;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: #454b50;
+                        border-radius: 7px;
+                        padding: 0px 10px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: 100%;
+                        input{
+                            background-color: transparent;
+                            border: none;
+                            outline: none;
+                            padding: 6px 8px;
+                            color: white;
+                            font-size: 15px;
+                            font-weight: 400;
+                            &::placeholder{
+                                color: white;
+                                font-size: 15px;
+                                font-weight: 200;
+                            }
+
+                        }
+                        i{
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 100;
+                        }
+                    }
+                    .display{
+                        padding-left: 10px;
+                        display: flex;
+                        i{
+                            color: white;
+                            margin-left: 10px;
+                            font-size: 20px;
+                            font-weight: 100; 
+                            
+                        }
+                    }
+                    .upload{
+                        padding: 0px 10px;
+                        button{
+                            padding: 3px 10px;
+                            border: none;
+                            border-radius: 7px;
+                            background: #495057;
+                            color: white;
+                            cursor: pointer;
+                            box-shadow: 0px 0px 10px #0f0f0f
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+   }
 }

@@ -1,17 +1,20 @@
 import React, {useState,useContext}from 'react'
 import { TabContext } from '../context/tabContext'
-
+import { GenerateNewTab } from './tabs'
+import { tab_uuid } from '../config/utils'
 export default function SidebarComponent() {
 
-    const {tabs,setTab,activeTab,setActiveTab,activeType, setActiveType} = useContext(TabContext) 
+    const {tabs,setTab,activeTab,setActiveTab,activeType, setActiveType,thisTab, setThisTab} = useContext(TabContext) 
  
     function addTab(tab){
         let tab_data = {}
+
         if (tab==='dc'){
 
 
  
         tab_data={
+            'uuid':tab_uuid(),
             'title':'Data Cluster',
             'title_icon':<i class='bx bxs-data'></i>,
             'type':'dc'
@@ -20,6 +23,7 @@ export default function SidebarComponent() {
         }
         else if (tab==='ovw'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Overview',
                 'title_icon':<i class='bx bxs-grid-alt'></i>,
                 'type':tab
@@ -27,36 +31,45 @@ export default function SidebarComponent() {
         }
         else if (tab==='docs'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Documents',
                 'title_icon':<i class='bx bxs-file-blank'></i>,
-                'type':tab
+                'type':tab,
+                'content':<GenerateNewTab tab={tab}/>
             }
         }
         else if (tab==='pics'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Pictures',
                 'title_icon':<i class='bx bxs-file-image'></i>,
-                'type':tab
+                'type':tab,
+                'content':<GenerateNewTab tab={tab}/>
             }
             
         }
         else if(tab==='vids'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Videos',
                 'title_icon': <i class='bx bxs-video'></i>,
-                'type':tab
+                'type':tab,
+                'content':<GenerateNewTab tab={tab}/>
             }
            
         }
         else if(tab==='audio'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Audios',
                 'title_icon':     <i class='bx bxs-music'></i>,
-                'type':tab
+                'type':tab,
+                'content':<GenerateNewTab tab={tab}/>
             }
         }
         else if(tab==='starred'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Starred',
                 'title_icon':<i class='bx bxs-bookmark'></i>,
                 'type':tab
@@ -66,6 +79,7 @@ export default function SidebarComponent() {
     
         else if(tab==='code'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Codes',
                 'title_icon':        <i class='bx bx-code-curly' ></i>,
                 'type':tab
@@ -74,6 +88,7 @@ export default function SidebarComponent() {
         }
         else if(tab==='git'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Git Repos',
                 'title_icon':               <i class='bx bxl-git'></i>,
                 'type':tab
@@ -82,6 +97,7 @@ export default function SidebarComponent() {
         }
         else if(tab==='api'){
             tab_data={
+                'uuid':tab_uuid(),
                 'title':'Api Integrations',
                 'title_icon':<i class='bx bx-network-chart'></i>,
                 'type':tab
@@ -91,13 +107,12 @@ export default function SidebarComponent() {
 
 
 
-        if (tabs.length===0){
-            setTab([tab_data])
-        }else{
-            setTab([...tabs,tab_data])
-        }
+      
+            setTab([tab_data,...tabs])
+   
         setActiveType(tab)
-        setActiveTab([...activeTab, tabs.length])
+        setActiveTab([ tab_data.uuid,...activeTab])
+        setThisTab(tab_data)
     console.log(activeTab)
     }
     function countType(data, type) {

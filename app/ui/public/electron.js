@@ -1,17 +1,25 @@
 const path = require('path');
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow,nativeImage } = require('electron');
 const isDev = require('electron-is-dev');
 
 function createWindow() {
   // Create the browser window.
+  const icon = nativeImage.createFromPath('short-logo.png')
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon:icon,
     webPreferences: {
       nodeIntegration: true,
     },
   });
+  // console.log(path.join(__dirname, 'short-logo.ico'))
+
+  // console.log(icon)
+
+  // win.setIcon(icon);
+
 
   // and load the index.html of the app.
   // win.loadFile("index.html");

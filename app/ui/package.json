@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"npm start\" \"npm:electron\"",
+    "dev": "concurrently -k \"npm start\" \"electron .\"",
     "electron": "wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
