@@ -3,3 +3,4 @@ PyJWT==1.7.1
 Flask
 bcrypt
 flask_cors
+gunicorn
