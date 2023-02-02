@@ -1,1 +1,146 @@
-[]
+[
+    {
+        "firstname": "Teddy",
+        "lastname": "Oweh",
+        "email": "teddyoweh@gmail.com",
+        "username": "teddyoweh",
+        "password": "6d03f196ee1efebadb9ecb1e9a8b42bd",
+        "id": "1311202315417482525160401",
+        "meta_data": [
+            {
+                "id": "869beca1b348e3a5b9eee63beb5d503f",
+                "filename": "intro.mp4",
+                "path": "data/root/client/users/9fc927056ce63a884d648fde6220bee2/intro.mp4212202322270951633471859",
+                "size": "78.4mb",
+                "access": [
+                    "1311202315417482525160401"
+                ],
+                "created": "2023-02-01 00:27:23.673582",
+                "modified": "2023-02-01 00:27:23.673588",
+                "storage_file": "intro.mp4212202322270951633471859"
+            }
+        ],
+        "folder_name": "9fc927056ce63a884d648fde6220bee2",
+        "date": "2023-01-31 17:54:02.004968",
+        "activity_history": [
+            {
+                "title": "Registered Account",
+                "date": "2023-01-31 17:54:02.004988"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-31 17:54:31.942983"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 18:15:31.307785"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 18:15:37.407930"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 18:22:40.318087"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 18:22:46.016021"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-31 19:46:54.964286"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-31 20:14:51.868166"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-31 20:15:08.122443"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 20:37:35.036628"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:12:12.619943"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:37:17.106324"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:40:22.116408"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:44:49.902884"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:45:06.077551"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:48:51.030488"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:51:17.486291"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:51:42.102350"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 23:53:32.562608"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-02-01 00:27:23.063727"
+            }
+        ]
+    },
+    {
+        "firstname": "Jim",
+        "lastname": "Rowdy",
+        "email": "jumpstartup23@hotmail.com",
+        "username": "JROWD",
+        "password": "47157706bf0d629f097801cb4ead75fc",
+        "id": "1311202344620645532128548",
+        "meta_data": [
+            {
+                "id": "bb2db67000388ac6659537615b722e79",
+                "filename": "Procedural_Programming_HW_1.c.vcxproj.user",
+                "path": "data/root/client/users/d05eb943a5506f4f2f3d31b745e0fb1a/Procedural_Programming_HW_1.c.vcxproj.user131120231938209608436409",
+                "size": "168.0b",
+                "access": [
+                    "1311202344620645532128548"
+                ],
+                "created": "2023-01-31 20:38:20.536992",
+                "modified": "2023-01-31 20:38:20.537006",
+                "storage_file": "Procedural_Programming_HW_1.c.vcxproj.user131120231938209608436409"
+            }
+        ],
+        "folder_name": "d05eb943a5506f4f2f3d31b745e0fb1a",
+        "date": "2023-01-31 20:06:45.180691",
+        "activity_history": [
+            {
+                "title": "Registered Account",
+                "date": "2023-01-31 20:06:45.180723"
+            },
+            {
+                "title": "Logged IN",
+                "date": "2023-01-31 20:07:12.599014"
+            },
+            {
+                "title": "Upload File",
+                "date": "2023-01-31 20:38:19.964423"
+            }
+        ]
+    }
+]

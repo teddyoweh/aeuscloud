@@ -1,4 +1,4 @@
-const serverip = 'http://137.184.0.187:8000'
+const serverip = 'http://127.0.0.1:5000'
 
 const headers =   {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -15,6 +15,7 @@ const homendpoints = {
   'home':`${serverip}/p`
 }
 const dataendpoints ={
-  'upload':`${serverip}/d/upload`
+  'upload':`${serverip}/d/upload`,
+  'list':`${serverip}/d/data`
 }
 export {serverip,authendpoints,homendpoints, headers,dataendpoints}

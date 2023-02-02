@@ -116,11 +116,12 @@ height: 40px;
     transition: 0.3s;
     background-color: rgba(33, 37, 41, 0.5294117647);
     position: fixed;
+
     height: 100vh;
     width: 100%;
     z-index: 999;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     .exit{
@@ -140,8 +141,53 @@ height: 40px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        &.short{
+            margin-left: 10px;
+            justify-content: flex-start;
+            overflow-y: scroll;
+            width: 30% !important;
+        }
         .bottom{
             padding: 10px;
+            .uploadloaders{
+                display: flex;
+                flex-direction: column;
+            }.uploadrol-box{
+                display: flex;
+                flex-direction: column;
+                .roll-details{
+                    label{
+                        color: white;
+                    }
+                }
+            }
+            .upload-loader{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 10px 0px;
+                align-items: center;
+                .uploader-roll{
+                    background: rgba(31, 36, 38, 0.6);
+                    width: 100%;
+                    border-radius: 7px;
+                    display: flex;
+                    backdrop-filter: blur(4px);
+                    flex-direction: row;
+                    .roll{
+                        background-color: #77ff6f;
+                       width: 1%;
+                       transition: 0.3s;
+                        height: 100%;
+                        padding: 3px;
+                        border-radius: 7px;
+                    }
+                }
+                .count{
+                    padding: 0px 4px;
+                    color: #77ff6f;
+                }
+            }
             .lilbtns{
                 display: flex;
                 flex-direction: row;

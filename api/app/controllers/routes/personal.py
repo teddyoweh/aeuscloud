@@ -68,6 +68,7 @@ def register():
  
             user_data['password'] = Util.secure_password(user_data['password'])
             user_data['id']=str(Util.uuid_())
+            user_data['meta_data']=[]
             user_data['folder_name'] = Util.folder_name(user_data['id'],Util.secure_password(user_data['password']),user_data['username'],user_data['email'],user_data['firstname'])
             user_data['date']=str(datetime.now())
             user_data['activity_history']=[{

@@ -19,6 +19,19 @@ class Utils:
         data  = uuid+password+username+email+firstname+self.uuid_()
         return self.hash_password(self.secure_password(data))
         pass
+    def select_keys(self,arr_dicts, keys): 
+        result = []
+        for dict in arr_dicts:
+            selected = {k: dict[k] for k in keys if k in dict}
+            result.append(selected)
+        return result 
+    def size_of(self,num):
+        suffix="b"
+        for unit in ["", "k", "m", "g", "t", "p", "e", "z"]:
+            if abs(num) < 1024.0:
+                return f"{num:3.1f}{unit}{suffix}"
+            num /= 1024.0
+        return f"{num:.1f}Yi{suffix}"
     def uuid_(self):
         now = datetime.datetime.now()
         day_of_week = now.weekday()

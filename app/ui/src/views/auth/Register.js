@@ -49,7 +49,7 @@ function RegisterPage(){
           } catch (error) {
             console.log(error)
             setActiveErrors(error.response.data.data)
-            setSuccess(true)
+            setSuccess(false)
             setActiveSuccess('')
        
 

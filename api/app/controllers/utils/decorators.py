@@ -33,3 +33,23 @@ def token_required(f):
         return current_user
   
     return decorated
+
+
+def user_():
+        token = None
+  
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+   
+ 
+    
+  
+        print(token)
+ 
+        data = jwt.decode(token, Utils().secret)
+ 
+    
+        current_user = User(data['id']).get_user_data()
+     
+
+        return current_user

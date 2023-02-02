@@ -18,8 +18,32 @@ const userdata ={
   'username':'teddyoweh'
   
 }
+function UploadLog({counter,name}){
+  const [uploadcounter,setUploadcounter] = useState('0%')
+  return (
+    <div className="uploadrol-box">
 
+    <div className="roll-details">
+      <label htmlFor="">{name}</label>
+    </div>
+    <div className="upload-loader">
+    <div className="uploader-roll">
+      <div className="roll" style={{'width':counter}}>
+
+      </div>
+   
+
+    </div>
+    <div className="count">
+    {counter}
+    </div>
+  </div>
+  </div>
+  )
+}
 export default function DashboardPage() {
+  const [uploadcounters, setUploadcounters] = useState([])
+  const [uploadison, setUploadison] = useState(false)
   const {isAuth, setIsAuth } = useContext(AppContext);
 
   const {userD} = useContext(UserContext)
@@ -49,28 +73,57 @@ export default function DashboardPage() {
 
   }
   const [imageURL, setImageURL] = useState('');
-
-  const handleUploadImage = (ev) => {
+  var blank = []
+  const uploadImage =(ev) =>{
+    setUploadison(true)
+  
+    for (let index = 0; index <uploadInput.current.files.length; index++) {
+        blank.push({'percent':'0%','name':uploadInput.current.files[index].name})
+     
+    }
+    console.log(uploadInput.current.files[0])
+    setUploadcounters([...uploadcounters,blank])
+ 
+    for (let index = 0; index <uploadInput.current.files.length; index++) {
+ 
+      handleUploadImage(ev,index)
+    }
+  }
+  const handleUploadImage = async (ev,index) => {
     ev.preventDefault();
 
     const data = new FormData();
-    data.append('file', uploadInput.current.files[0]);
+    
+    data.append('file', uploadInput.current.files[index]);
  
     data.append('datatype',datatype)
     data.append('userdata', JSON.stringify(userD))
-    console.log(data)
-    fetch(dataendpoints['upload'], {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-      
-      });
+ 
+
+
+   await axios.post(dataendpoints['upload'],data,{headers:headers,
+      onUploadProgress: (progressEvent) => {
+        const percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        var  auploadcounters = [...blank]
+        console.log(auploadcounters)
+        auploadcounters[index]['percent']=`${percentCompleted}%`
+        blank[index]['percent']=`${percentCompleted}%`
+ 
+        setUploadcounters(auploadcounters)
+        }
+    },
+    
+    )
+    .then((response) => {
+    
     });
   }
 
   const uploadInput = React.createRef();
   const fileName = React.createRef();
+ 
  
   return (
    
@@ -144,7 +197,7 @@ export default function DashboardPage() {
                   <div className="frm-group">
            
       <div>
-        <input ref={uploadInput}  type="file" />
+        <input ref={uploadInput}  multiple type="file" />
       </div>
       <div>
        
@@ -162,13 +215,45 @@ export default function DashboardPage() {
               </div>
               </div>
               <div className="bottom">
+             
                 <div className="lilbtns">
-                  <button onClick={handleUploadImage}>Upload</button>
+                  <button onClick={uploadImage}>Upload</button>
                   <button onClick={()=>toggleUpload()}>Cancel</button>
                 </div>
               </div>
               
              </div>
+             {uploadison==true &&
+             <div className='addnew short'>
+
+             <div className="header">
+                <div className="left">
+                  <label htmlFor="">
+                    Upload Details
+                  </label>
+                </div>
+                <div className="right">
+                  <i className='bx bx-x' onClick={()=>setUploadison(false)}></i>
+                </div>
+
+              </div>
+             <div className="bottom">
+                <div className="uploadloaders">
+
+
+                {uploadison==true &&
+                  uploadcounters.reverse().map((counter,index)=>
+                  {
+                    return (
+                      <UploadLog counter={counter['percent']} name={counter.name}/>
+                    )
+                  })
+                }
+                                </div>
+                                </div>
+
+             </div>
+             }
       
        </div>
        </>
