@@ -5,8 +5,10 @@ import axios from "axios";
 import { homendpoints,headers } from "./config/constants";
 import { UserContext } from "./context/userContext";
 import { TabContext } from "./context/tabContext";
+import { Loader } from "./components";
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
+  const [isloaded, setloaded] = useState(false);
   const [tabs, setTab] = useState([]);
   const [activeTab,setActiveTab] = useState([])
   const [activeType, setActiveType] =useState('')
@@ -31,12 +33,18 @@ function App() {
   
   
     }
+    setloaded(true)
   }
   useEffect(() => {
  
     initPage();
   },[]);
   return (
+    isloaded===false?
+    <Loader/>
+    :
+    <>
+
     <AppContext.Provider value={{isAuth,setIsAuth}} >
       <UserContext.Provider value={{userD, setUserD}}>
         <TabContext.Provider value={{tabs,setTab,activeTab,setActiveTab,activeType, setActiveType,thisTab, setThisTab}}>
@@ -48,6 +56,7 @@ function App() {
         </TabContext.Provider>
         </UserContext.Provider>
     </AppContext.Provider>
+    </>
 
   );
 }

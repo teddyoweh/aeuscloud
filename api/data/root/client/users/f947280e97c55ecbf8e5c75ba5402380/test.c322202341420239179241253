@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int euclid(int m, int n) {
+    int r, quotient;
+    while (n != 0) {
+        r = m % n;
+        quotient = m / n;
+        printf("m: %d, n: %d, r: %d, quotient: %d\n", m, n, r, quotient);
+        m = n;
+        n = r;
+    }
+    return m;
+}
+
+int main() {
+    int m = 1155, n =12597;
+    int gcd = euclid(m, n);
+    printf("GCD: %d\n", gcd);
+    return 0;
+}

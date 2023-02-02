@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, request
 import os
 from werkzeug.utils import secure_filename
-from flask import Flask, flash, request, redirect, url_for, session
+from flask import Flask, flash, request, redirect, url_for, session,jsonify
 from flask_cors import CORS, cross_origin
 import logging
 from app.controllers.utils.Utils import Utils, User
@@ -51,6 +51,9 @@ def createnotes():
 @blueprint.route(droutes['listdata']['route'], methods=droutes['listdata']['method'])
 @cross_origin(origin='*',headers=['Authorization'])
 def listdata():
+    post_data= request.form
+    post_data = dict(post_data)
+
     user = user_()
     print(user)
     with open(Util.users_database, 'r') as f:
@@ -59,7 +62,14 @@ def listdata():
         for _ in data:
         
             if _['id']==user['id']:
-                return Util.select_keys(_['meta_data'],['id','filename','size','access','size','created','modified'])
+                resdata = Util.select_keys(_['meta_data'],['id','filename','size','access','size','created','modified'])
+                print(post_data)
+                start = int(post_data['start'])
+                end = int(post_data['end'])
+                print(type(start))
+                print(type(end))
+                response = jsonify({'data':resdata[start:end],'length':len(resdata[start:end]),'total':len(resdata)})
+                return  response
 
 
 

@@ -1,0 +1,74 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+ 
+typedef struct Node { //typedef renames struct Node to only Node, to simplify the declarations 
+    int val; 
+    struct Node *next; 
+} Node; 
+ 
+Node *head = NULL, *tail = NULL; 
+ 
+void add_tail(int val){ 
+    Node *p = malloc(sizeof(Node)); 
+    p->val = val; 
+    p->next = NULL; 
+    if (tail){ 
+        tail->next = p; 
+        tail = p; 
+    } 
+    else{ 
+        head = tail = p; 
+    } 
+} 
+ 
+void print_list(){
+
+printf("The list is: ");
+for(Node *p = head;  p; p = p->next) {
+printf("%d ", p->val);
+}
+}
+int get_list_element(int i) {
+    Node *p = head;
+    int index = 0;
+    while (p) {
+        if (index == i) {
+            return p->val;
+        }
+        p = p->next;
+        index++;
+    }
+    return 0;
+}
+int list_len() {
+    Node *p = head;
+    int length = 0;
+    while (p) {
+        length++;
+        p = p->next;
+    }
+    return length;
+}
+
+int list_total(){
+    int total = 0;
+    Node *p = head;
+    while (p) 
+    { 
+        total += p->val; 
+        p = p->next; 
+    } 
+    return total;
+}
+
+int main(void){ 
+    int m; 
+    printf("Enter integers, 0 to exit:\n"); 
+    scanf("%d", &m); 
+    while (m != 0){ 
+        add_tail(m); 
+        scanf("%d", &m); 
+    } 
+    print_list(); 
+    printf("\nThe total is: %d\n", list_total());
+}

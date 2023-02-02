@@ -1,0 +1,16 @@
+class Triangle 1
+
+Public static void main (String (3 args) {
+
+int row, stars;
+
+For Crowa1s row «10; row) {
+for (stars «15 stars <= row; starsae) {
+System. out. print (“#”);
+
+System. out. printin (
+
+}
+i
+i
+

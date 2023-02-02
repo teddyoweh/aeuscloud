@@ -58,11 +58,17 @@ function IconTag({name}){
 }
 function DocumentsTab(){
     const [filesData,setFilesData] = useState([])
+    const [FilesDatatotalNum,setFilesDatatotalNum]=useState('0')
+    const [start,setStart] = useState('0')
+    const [end,setEnd] = useState('10')
+
+
     async function LoadData(){
-       await axios.post(dataendpoints['list'],{'data':'message'}, {headers:headers})
+       await axios.post(dataendpoints['list'],{'start':start,'end':end}, {headers:headers})
         .then((response)=>{
             console.log(response.data)
-            setFilesData(response.data.reverse())
+            setFilesData(response.data.data.reverse())
+            setFilesDatatotalNum(response.data.total)
         }).catch((error)=>{
             console.log(error);
         })
@@ -141,9 +147,19 @@ function DocumentsTab(){
             </div>
             <div className="app-page-footer">
                 <div className="left">
-                    <label htmlFor="">Showing</label>
+                    <label htmlFor="">Showing {end} of {FilesDatatotalNum} </label>
                 </div>     
-                <div className="right"></div>
+                <div className="right">
+                <div className="box">
+      
+                    <i class='bx bx-chevron-left'></i>  
+                    <label htmlFor="">Previous</label>
+                    </div>
+                    <div className="box">
+                    <label htmlFor="">Next</label>
+                    <i class='bx bx-chevron-right'></i>  
+                    </div>
+                </div>
             </div>
       </div>
     )
